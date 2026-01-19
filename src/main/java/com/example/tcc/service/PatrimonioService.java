@@ -1,5 +1,6 @@
 package com.example.tcc.service;
 
+import com.example.tcc.dto.DadosAtualizacaoPatrimonio;
 import com.example.tcc.dto.DadosCadastroPatrimonio;
 import com.example.tcc.dto.DadosDetalhadosPatrimonio;
 import com.example.tcc.model.Patrimonio;
@@ -23,5 +24,12 @@ public class PatrimonioService {
         var uri = uriBuilder.path("/patrimonios/{id}").buildAndExpand(patrimonio.getId()).toUri();
 
         return ResponseEntity.created(uri).body(new DadosDetalhadosPatrimonio(patrimonio));
+    }
+
+    public ResponseEntity atualizar(@Valid DadosAtualizacaoPatrimonio dados) {
+        Patrimonio patrimonio = patrimonioRepository.getReferenceById(dados.id());
+        patrimonio.atualizarPatrimonio(dados);
+
+        return ResponseEntity.ok(new DadosDetalhadosPatrimonio(patrimonio));
     }
 }
