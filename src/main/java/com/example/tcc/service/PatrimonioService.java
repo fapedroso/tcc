@@ -32,4 +32,11 @@ public class PatrimonioService {
 
         return ResponseEntity.ok(new DadosDetalhadosPatrimonio(patrimonio));
     }
+
+    public ResponseEntity deletar(Long id) {
+        Patrimonio patrimonio = patrimonioRepository.getReferenceById(id);
+        patrimonio.excluir();
+
+        return ResponseEntity.noContent().build();
+    }
 }

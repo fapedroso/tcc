@@ -19,11 +19,11 @@ public class Patrimonio {
     private String nome;
     private String descricao;
     private Boolean estado;
+    private Boolean ativo;
 
     public Patrimonio(DadosCadastroPatrimonio dados){
         this.descricao = dados.descricao();
         this.nome = dados.nome();
-        this.estado = true;
     }
 
     public void atualizarPatrimonio(@Valid DadosAtualizacaoPatrimonio dados) {
@@ -37,5 +37,9 @@ public class Patrimonio {
         if(dados.estado() != null){
             this.estado = dados.estado();
         }
+    }
+
+    public void excluir() {
+        this.ativo = false;
     }
 }

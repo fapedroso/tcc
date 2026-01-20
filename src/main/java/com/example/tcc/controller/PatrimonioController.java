@@ -29,4 +29,10 @@ public class PatrimonioController {
     public ResponseEntity atualizar(@RequestBody @Valid DadosAtualizacaoPatrimonio dados){
         return patrimonioService.atualizar(dados);
     }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity deletar(@PathVariable Long id){
+        return patrimonioService.deletar(id);
+    }
 }
