@@ -7,6 +7,8 @@ import com.example.tcc.model.Patrimonio;
 import com.example.tcc.repository.PatrimonioRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -38,5 +40,11 @@ public class PatrimonioService {
         patrimonio.excluir();
 
         return ResponseEntity.noContent().build();
+    }
+
+    public ResponseEntity<Page<DadosDetalhadosPatrimonio>> listar(Pageable paginacao) {
+        var page = patrimonioRepository.findAllByAtivoTrue(paginacao).map(DadosDetalhadosPatrimonio::new);
+
+        return ResponseEntity.ok(page);
     }
 }

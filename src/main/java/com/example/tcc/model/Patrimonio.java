@@ -7,6 +7,7 @@ import jakarta.validation.Valid;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 
 @Entity(name = "Patrimonio")
 @Table(name = "patrimonios")
@@ -24,6 +25,8 @@ public class Patrimonio {
     public Patrimonio(DadosCadastroPatrimonio dados){
         this.descricao = dados.descricao();
         this.nome = dados.nome();
+        this.estado = true;
+        this.ativo = true;
     }
 
     public void atualizarPatrimonio(@Valid DadosAtualizacaoPatrimonio dados) {
@@ -32,10 +35,6 @@ public class Patrimonio {
         }
         if(dados.descricao() != null){
             this.descricao = dados.descricao();
-        }
-
-        if(dados.estado() != null){
-            this.estado = dados.estado();
         }
     }
 
