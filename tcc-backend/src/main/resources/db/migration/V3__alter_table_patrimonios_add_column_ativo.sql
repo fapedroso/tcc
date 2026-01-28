@@ -1,0 +1,1 @@
+alter table patrimonios add column ativo tinyint default 1;
