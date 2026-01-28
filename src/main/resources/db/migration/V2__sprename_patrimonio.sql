@@ -1,1 +1,0 @@
-rename table patrimonio to patrimonios;
