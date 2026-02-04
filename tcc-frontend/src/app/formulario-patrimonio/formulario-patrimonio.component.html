@@ -1,0 +1,15 @@
+<form [formGroup]="patrimonioForm" (ngSubmit)="salvarPatrimonio()">
+  <label for="nome">Nome</label>
+  <input
+    type="text"
+    placeholder="Digite o nome do patrimonio"
+    formControlName="nome"
+  />
+  <label for="descricao">Descrição</label>
+  <textarea
+    type="text"
+    placeholder="Descreva o patrimonio"
+    formControlName="descricao"
+  ></textarea>
+  <button type="submit">Salvar Patrimonio</button>
+</form>
